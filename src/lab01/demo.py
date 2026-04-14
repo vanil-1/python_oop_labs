@@ -1,8 +1,4 @@
-import sys
-from pathlib import Path
-
-sys.path.append(str(Path(__file__).resolve().parent.parent))
-from model import House
+from src.lab01.model import House
 
 
 def normal():

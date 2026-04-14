@@ -1,3 +1,7 @@
 # Информация о пакетах:
 
-...to_be_continue...
+Список пакетов:
+* config - mapping;
+* converters - конверторы;
+* models - модели сущностей;
+* validators - различные валидации.
