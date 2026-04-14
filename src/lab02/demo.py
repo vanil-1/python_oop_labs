@@ -8,6 +8,7 @@ def print_block(title: str):
     print(title)
     print("=" * 80)
 
+
 def safe_run(fn):
     try:
         fn()
@@ -19,12 +20,7 @@ house_list = convert_to_list(House, "data/lab02/data.json")
 district = HousesDistrict("Green Park District", house_list)
 
 test_house = House(
-    address="7 cedar lane",
-    floors=2,
-    area=60,
-    cost=220,
-    min_time_rent=2,
-    rented=False
+    address="7 cedar lane", floors=2, area=60, cost=220, min_time_rent=2, rented=False
 )
 
 
@@ -85,6 +81,7 @@ def scenario_4_errors():
 
     print("\n3) Invalid index remove:")
     safe_run(lambda: district.remove_at(999))
+
 
 def main():
     actions = {

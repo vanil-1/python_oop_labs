@@ -7,6 +7,7 @@ from src.libs.validators.validate import (
     validate_rented,
 )
 
+
 class House:
     def __init__(
         self,
@@ -27,11 +28,11 @@ class House:
     @property
     def address(self):
         return self._address
-    
+
     @property
     def floors(self):
         return self._floors
-    
+
     @property
     def area(self):
         return self._area
@@ -90,13 +91,13 @@ class House:
 
     def __str__(self):
         return (
-        f"Address: {self._address}, "
-        f"Floors: {self._floors}, "
-        f"Area: {self._area} m², "
-        f"Cost: {self._cost}$/month, "
-        f"Min rent: {self._min_time_rent} months, "
-        f"Rented: {self._rented}"
-    )
+            f"Address: {self._address}, "
+            f"Floors: {self._floors}, "
+            f"Area: {self._area} m², "
+            f"Cost: {self._cost}$/month, "
+            f"Min rent: {self._min_time_rent} months, "
+            f"Rented: {self._rented}"
+        )
 
     def __repr__(self):
         return f"House(address={self._address!r}, floors={self._floors}, area={self._area}, cost={self._cost}, min_time_rent={self._min_time_rent},rented={self._rented})"
