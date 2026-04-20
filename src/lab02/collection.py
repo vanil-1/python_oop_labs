@@ -1,6 +1,6 @@
 from operator import attrgetter
 from src.libs.models.house_model import House
-from src.libs.validators.validate import validate_type, VALIDATORS
+from src.libs.validators.parent_validate import validate_type, VALIDATORS
 from src.libs.config.config import FIELD_MAP
 
 

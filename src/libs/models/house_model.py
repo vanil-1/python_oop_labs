@@ -1,4 +1,4 @@
-from src.libs.validators.validate import (
+from src.libs.validators.parent_validate import (
     validate_address,
     validate_floors,
     validate_area,
