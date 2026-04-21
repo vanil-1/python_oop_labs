@@ -9,6 +9,8 @@ from src.libs.validators.parent_validate import (
 
 
 class House:
+    WEIGHTS = {}
+
     def __init__(
         self,
         address: str,
