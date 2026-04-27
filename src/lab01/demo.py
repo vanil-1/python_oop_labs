@@ -1,4 +1,4 @@
-from src.lab01.model import House
+from src.lab01.base_house import House
 
 
 def normal():

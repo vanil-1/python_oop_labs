@@ -1,27 +1,30 @@
 import re
 
 
-def normalize(string: str):
-    string = re.sub(r"[\x00-\x1F\x7F\u200B\uFEFF]", " ", string)
+def normalize_address(string: str) -> str:
+    string = re.sub(r"[\x00-\x1F\x7F\u200B\uFEFF]", " ", string) # make string clean
     string = " ".join(string.split())
+
     return string.casefold().strip()
 
 
-def validate_address(address: str):
+def validate_address(address: str) -> str:
     if not isinstance(address, str):
         raise TypeError("Address must be string!")
 
-    address = normalize(address)
+    address = normalize_address(address)
+    address_pattern = re.compile(r"^\d+\s[a-z]+(?:\s[a-z]+)?$") 
+    # format: "{number of house} {street}", street = 1|2 words
 
-    address_pattern = re.compile(r"^\d+\s[a-z]+(?:\s[a-z]+)?")
     if not address_pattern.fullmatch(address):
         raise ValueError(
-            "Address must be format: <number of house street> apt. <number>!"
+            "Address must be format: *number of house* *street*, where street = 1|2 words!"
         )
+    
     return address
 
 
-def validate_floors(floors: int):
+def validate_floors(floors: int) -> int:
     if not isinstance(floors, int):
         raise TypeError("Floors must be int!")
 
@@ -31,7 +34,7 @@ def validate_floors(floors: int):
     return floors
 
 
-def validate_area(area: float | int):
+def validate_area(area: float | int) -> float | int:
     if not isinstance(area, (int, float)):
         raise TypeError("Area must be float or int!")
 
@@ -41,7 +44,7 @@ def validate_area(area: float | int):
     return area
 
 
-def validate_cost(cost: float | int):
+def validate_cost(cost: float | int) -> float | int:
     if not isinstance(cost, (int, float)):
         raise TypeError("Cost must be float or int!")
 
@@ -51,7 +54,7 @@ def validate_cost(cost: float | int):
     return cost
 
 
-def validate_min_time_rent(min_time_rent: int):
+def validate_min_time_rent(min_time_rent: int) -> int:
     if not isinstance(min_time_rent, int):
         raise TypeError("Minimal time of rent must be int!")
 
@@ -61,7 +64,7 @@ def validate_min_time_rent(min_time_rent: int):
     return min_time_rent
 
 
-def validate_rented(rented: bool):
+def validate_rented(rented: bool) -> bool:
     if not isinstance(rented, bool):
         raise TypeError("Rented must be bool!")
 

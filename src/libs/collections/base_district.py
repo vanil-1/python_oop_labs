@@ -1,6 +1,8 @@
 from operator import attrgetter
-from src.libs.models.house_model import House
-from src.libs.validators.parent_validate import validate_type, VALIDATORS
+from src.libs.models.base_house import House
+from src.libs.models.private_house import PrivateHouse
+from src.libs.models.commercial_house import CommercialHouse
+from src.libs.validators.base_house import validate_type, VALIDATORS
 from src.libs.config.config import FIELD_MAP
 
 
@@ -47,7 +49,13 @@ class HousesDistrict:
                 result.append(item)
 
         return result
+    
+    def get_private(self):
+        return [obj for obj in self._items if isinstance(obj, PrivateHouse)]
 
+    def get_commercial(self):
+        return [obj for obj in self._items if isinstance(obj, CommercialHouse)]
+    
     def sort_by_cost(self):
         self._items.sort(key=attrgetter("cost"))
 

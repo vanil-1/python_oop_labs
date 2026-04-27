@@ -1,0 +1,74 @@
+[
+  {
+    "type": "private",
+    "address": "12 baker",
+    "floors": 2,
+    "area": 150.5,
+    "cost": 200000,
+    "min_time_rent": 3,
+    "rented": false,
+    "land_area": 500,
+    "heating_type": "gas",
+    "occupants_count": 4
+  },
+  {
+    "type": "private",
+    "address": "45 elm street",
+    "floors": 1,
+    "area": 90,
+    "cost": 120000,
+    "min_time_rent": 2,
+    "rented": true,
+    "land_area": 300,
+    "heating_type": "electric",
+    "occupants_count": 2
+  },
+  {
+    "type": "private",
+    "address": "78 lake road",
+    "floors": 3,
+    "area": 200,
+    "cost": 300000,
+    "min_time_rent": 5,
+    "rented": false,
+    "land_area": 1200,
+    "heating_type": "stove",
+    "occupants_count": 6
+  },
+  {
+    "type": "commercial",
+    "address": "10 market",
+    "floors": 3,
+    "area": 800,
+    "cost": 1500000,
+    "min_time_rent": 6,
+    "rented": false,
+    "usage_type": "office",
+    "operational_area": 700,
+    "customers_average_count": 30
+  },
+  {
+    "type": "commercial",
+    "address": "22 retail center",
+    "floors": 2,
+    "area": 400,
+    "cost": 900000,
+    "min_time_rent": 4,
+    "rented": true,
+    "usage_type": "retail",
+    "operational_area": 350,
+    "customers_average_count": 25
+  },
+  {
+    "type": "commercial",
+    "address": "99 storage zone",
+    "floors": 1,
+    "area": 1000,
+    "cost": 700000,
+    "min_time_rent": 12,
+    "rented": false,
+    "usage_type": "warehouse",
+    "operational_area": 950,
+    "customers_average_count": 10
+  }
+]

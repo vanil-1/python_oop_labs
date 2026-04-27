@@ -59,14 +59,14 @@ P.S. Также от состояния объекта зависит и setter 
 
 ```
 python_oop_labs/
-├─ README.md
-├─ src/
+├─README.md
+├─src/
 │  ├─ libs/
-|  |   └─validate.py
-│  ├─ lab01/
-│  │   ├─ model.py
-|  |   └─ demo.py
-└─ images/
+|  |   └─base_house.py
+│  ├─lab01/
+│  │  ├─base_house.py
+|  |  └─demo.py
+└─images/
    └─ lab01/
 ```
 

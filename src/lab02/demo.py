@@ -1,6 +1,6 @@
-from src.libs.models.house_model import House
-from src.lab02.collection import HousesDistrict
-from src.libs.converters.converter import convert_to_list
+from src.libs.models.base_house import House
+from src.lab02.base_district import HousesDistrict
+from src.libs.converters.base_convert import convert_house_to_list
 
 
 def print_block(title: str):
@@ -16,7 +16,7 @@ def safe_run(fn):
         print(f"\nERROR: {type(e).__name__}: {e}")
 
 
-house_list = convert_to_list(House, "data/lab02/data.json")
+house_list = convert_house_to_list(House, "data/lab02/data.json")
 district = HousesDistrict("Green Park District", house_list)
 
 test_house = House(

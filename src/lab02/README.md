@@ -141,23 +141,23 @@
 
 ```
 python_oop_labs/
-├─ README.md
-├─ src/
-│  ├─ libs/
-|  |   ├─models
-|  |   |   └─model.py
-|  |   └─config
-|  |       └─config.py
-│  ├─ lab01/
-│  ├─ lab02/
-|  |   ├─ collection.py
-|  |   └─ demo.py
-├─ data/
+├─README.md
+├─src/
+│  ├─libs/
+|  |  ├─models
+|  |  |  └─base_house.py
+|  |  └─config
+|  |     └─config.py
+│  ├─lab01/
+│  ├─lab02/
+|  |  ├─base_district.py
+|  |  └─demo.py
+├─data/
 |  └─lab02/
 |     └─data.json
-└─ images/
-   ├─ lab01/
-   └─ lab02/
+└─images/
+   ├─lab01/
+   └─lab02/
 ```
 
 ### Реализованная коллекция:

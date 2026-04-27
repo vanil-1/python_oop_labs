@@ -1,4 +1,4 @@
-from src.libs.validators.parent_validate import (
+from src.libs.validators.base_house import (
     validate_address,
     validate_floors,
     validate_area,
@@ -10,7 +10,7 @@ from src.libs.validators.parent_validate import (
 
 class House:
     WEIGHTS = {}
-
+    
     def __init__(
         self,
         address: str,
@@ -89,7 +89,7 @@ class House:
             return f"House on the {self._address} is rented successfully!"
 
     def cost_rent_time(self):
-        return f"Cost of {self._min_time_rent} months is {self._cost * self._min_time_rent}$."
+        return self._cost * self._min_time_rent
 
     def __str__(self):
         return (
