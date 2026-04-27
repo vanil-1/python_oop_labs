@@ -26,6 +26,7 @@
 
 ## Репозиторий:
 
+```
 python_oop_labs/
 ├─README.md
 ├─src/
@@ -47,5 +48,6 @@ python_oop_labs/
    ├─lab02/
    ├─lab03/
    └─lab04/
+```
 
 ---
