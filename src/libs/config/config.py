@@ -1,6 +1,6 @@
 from src.libs.models.private_house import PrivateHouse
 from src.libs.models.commercial_house import CommercialHouse
- 
+
 
 FIELD_MAP = {
     "address": "address",
@@ -11,7 +11,4 @@ FIELD_MAP = {
     "rented": "rented",
 }
 
-CLASS_MAP = {
-    "private": PrivateHouse,
-    "commercial": CommercialHouse
-}
+CLASS_MAP = {"private": PrivateHouse, "commercial": CommercialHouse}

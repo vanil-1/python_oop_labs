@@ -2,7 +2,7 @@ import re
 
 
 def normalize_address(string: str) -> str:
-    string = re.sub(r"[\x00-\x1F\x7F\u200B\uFEFF]", " ", string) # make string clean
+    string = re.sub(r"[\x00-\x1F\x7F\u200B\uFEFF]", " ", string)  # make string clean
     string = " ".join(string.split())
 
     return string.casefold().strip()
@@ -13,14 +13,14 @@ def validate_address(address: str) -> str:
         raise TypeError("Address must be string!")
 
     address = normalize_address(address)
-    address_pattern = re.compile(r"^\d+\s[a-z]+(?:\s[a-z]+)?$") 
+    address_pattern = re.compile(r"^\d+\s[a-z]+(?:\s[a-z]+)?$")
     # format: "{number of house} {street}", street = 1|2 words
 
     if not address_pattern.fullmatch(address):
         raise ValueError(
             "Address must be format: *number of house* *street*, where street = 1|2 words!"
         )
-    
+
     return address
 
 

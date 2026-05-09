@@ -6,29 +6,21 @@ from src.libs.collections.base_district import HousesDistrict
 def main():
     print("\n=== LOADING DATA FROM JSON ===")
 
-    house_list = convert_pr_cl_to_list(
-        CLASS_MAP,
-        "data/lab03/data.json"
-    )
+    house_list = convert_pr_cl_to_list(CLASS_MAP, "data/lab03/data.json")
 
     district = HousesDistrict("Green Park District", house_list)
 
     print(f"Loaded houses: {len(district)}\n")
-
 
     print("\n=== SCENARIO 1: All objects ===")
 
     for house in district:
         print(house)
 
-
     print("\n=== SCENARIO 2: Polymorphism ===")
 
     for house in district:
-        print(
-            f"{house.address} -> efficiency = {house.value_efficiency_index():.3f}"
-        )
-
+        print(f"{house.address} -> efficiency = {house.value_efficiency_index():.3f}")
 
     print("\n=== SCENARIO 3: Filtering & isinstance ===")
 
@@ -42,7 +34,6 @@ def main():
     print("\nCommercial houses:")
     for h in commercial_houses:
         print(h.address, isinstance(h, type(h)))
-
 
     print("\n=== SCENARIO 4: business logic & errors ===")
 

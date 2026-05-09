@@ -3,6 +3,7 @@ import json
 
 T = TypeVar("T")
 
+
 def convert_pr_cl_to_list(CLASS_MAP: dict[str, Type[T]], path: str) -> list[T]:
     with open(path, "r", encoding="utf-8") as file:
         data = json.load(file)

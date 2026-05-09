@@ -10,7 +10,7 @@ from src.libs.validators.base_house import (
 
 class House:
     WEIGHTS = {}
-    
+
     def __init__(
         self,
         address: str,

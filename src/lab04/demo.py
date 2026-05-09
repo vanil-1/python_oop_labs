@@ -8,21 +8,16 @@ from src.lab04.services import reset_all, total_income
 def main():
     print("\n=== SCENARIO 1: SYSTEM INITIALIZATION (polymorphic loading) ===")
 
-    houses = convert_pr_cl_to_list(
-        CLASS_MAP,
-        "data/lab04/data.json"
-    )
+    houses = convert_pr_cl_to_list(CLASS_MAP, "data/lab04/data.json")
 
     district = HousesDistrict("Neon District", houses)
 
     print(f"System initialized: {len(district)} objects loaded")
 
-
     print("\n=== SCENARIO 2: INTERFACE-BASED BEHAVIOR (RentIncome polymorphism) ===")
 
     for h in district.get_rent_income_objects():
         print(f"{h.address}: income = {h.get_rent_income():.2f}")
-
 
     print("\n=== SCENARIO 3: UNIFIED INTERFACE FUNCTIONS (no direct class usage) ===")
 
@@ -34,7 +29,6 @@ def main():
 
     print("After reset income check:")
     print(total_income(district.get_rent_income_objects()))
-
 
     print("\n=== SCENARIO 4: INTERFACE DETECTION + BEHAVIOR DIFFERENCE ===")
 
@@ -48,18 +42,19 @@ def main():
     print("\nResetting ONLY commercial houses via interface filter")
 
     for obj in district:
-        if isinstance(obj, Reset) and hasattr(obj, "get_house_type") and obj.get_house_type() == "commercial":
+        if (
+            isinstance(obj, Reset)
+            and hasattr(obj, "get_house_type")
+            and obj.get_house_type() == "commercial"
+        ):
             obj.reset()
 
     print("\n=== SCENARIO 5: ARCHITECTURAL VALIDATION (no direct type logic) ===")
 
- 
     rentable_items = district.get_rent_income_objects()
 
     sorted_income = sorted(
-        rentable_items,
-        key=lambda x: x.get_rent_income(),
-        reverse=True
+        rentable_items, key=lambda x: x.get_rent_income(), reverse=True
     )
 
     print("Top 3 income objects:")

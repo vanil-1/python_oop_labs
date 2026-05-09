@@ -2,8 +2,7 @@ from operator import attrgetter
 from src.libs.models.base_house import House
 from src.libs.models.private_house import PrivateHouse
 from src.libs.models.commercial_house import CommercialHouse
-from src.libs.interfaces.pt_cl_interfaces import (RentIncome, 
-                                                  HouseType)
+from src.libs.interfaces.pt_cl_interfaces import RentIncome, HouseType
 from src.libs.validators.base_house import validate_type, VALIDATORS
 from src.libs.config.config import FIELD_MAP
 
@@ -51,27 +50,26 @@ class HousesDistrict:
                 result.append(item)
 
         return result
-    
+
     def get_private(self):
-            return [
-        item for item in self._items
-        if isinstance(item, HouseType) and item.get_house_type() == "private"
-    ]
+        return [
+            item
+            for item in self._items
+            if isinstance(item, HouseType) and item.get_house_type() == "private"
+        ]
 
     def get_commercial(self):
         return [
-        item for item in self._items
-        if isinstance(item, HouseType) and item.get_house_type() == "commercial"
-    ]
-    
+            item
+            for item in self._items
+            if isinstance(item, HouseType) and item.get_house_type() == "commercial"
+        ]
+
     def get_rent_income_objects(self):
         return [item for item in self._items if isinstance(item, RentIncome)]
 
     def sort_by_rent_income_desc(self):
-        self._items.sort(
-        key=lambda item: item.get_rent_income(),
-        reverse=True
-    )
+        self._items.sort(key=lambda item: item.get_rent_income(), reverse=True)
 
     def sort_by_cost(self):
         self._items.sort(key=attrgetter("cost"))

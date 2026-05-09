@@ -11,7 +11,7 @@ from src.libs.validators.base_house import (
 
 class House(ABC):
     WEIGHTS = {}
-    
+
     def __init__(
         self,
         address: str,
@@ -87,10 +87,10 @@ class House(ABC):
             raise ValueError("House had already rented!")
         else:
             self._rented = True
-    
+
     def cost_rent_time(self):
         return self._cost * self._min_time_rent
-    
+
     @abstractmethod
     def value_efficiency_index(self):
         pass
