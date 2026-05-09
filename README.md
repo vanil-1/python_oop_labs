@@ -7,12 +7,12 @@
 ### lab01
 ### lab02
 ### lab03
-
+### lav04
 ---
 
 ## Незаконченные лабораторные работы:
 
-### lab04
+...
 
 ---
 
@@ -32,6 +32,8 @@ python_oop_labs/
 ├─src/
 │  ├─libs/
 │  │  ├─models/
+|  |  ├─interfaces/
+|  |  ├─services/
 │  │  ├─collections/
 │  │  ├─converters/
 │  │  ├─config/
@@ -42,7 +44,8 @@ python_oop_labs/
 |  └─lab04/
 ├─data/
 |  ├─lab02/
-|  └─lab03/
+|  ├─lab03/
+|  └─lab04/
 └─images/
    ├─lab01/
    ├─lab02/

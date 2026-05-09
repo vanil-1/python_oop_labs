@@ -3,3 +3,11 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# Environment variables
+.env
+.env.*
+
+# IDE / Editor settings
+.vs/
+.vscode/

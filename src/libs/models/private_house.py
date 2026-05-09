@@ -1,11 +1,14 @@
 from src.libs.models.base_house import House
+from src.libs.interfaces.pt_cl_interfaces import (RentIncome,
+                                                  Reset,
+                                                  HouseType)
 from src.libs.validators.common_house import validate_people_count
 from src.libs.validators.private_house import (
     validate_land_area,
     validate_heating_type,
 )
 
-class PrivateHouse(House):
+class PrivateHouse(House, RentIncome, Reset, HouseType):
     WEIGHTS = {'S': 0.25, 'H': 0.3, 'C': 0.25, 'F': 0.2} # weights for count comfort_index()
     SENSITIVITY_HEATING = {'gas': 1.0, 'electric': 0.7, 'stove': 0.4}
 
@@ -30,6 +33,14 @@ class PrivateHouse(House):
         self._heating_type = validate_heating_type(heating_type)
         self._occupants_count = validate_people_count(occupants_count)
 
+    @property
+    def occupants_count(self):
+        return self._occupants_count
+
+    @occupants_count.setter
+    def occupants_count(self, value):
+        self._occupants_count = validate_people_count(value)
+
     def comfort_index(self):
         area_balance = (1 - abs((self._area / self._land_area) - 0.3)) / 0.3 # cofficient area: area / land_area
         S = 0.5 * area_balance # square index
@@ -47,3 +58,19 @@ class PrivateHouse(House):
 
     def value_efficiency_index(self):
         return self.comfort_index()
+    
+    def get_rent_income(self) -> float:
+        gross = self._cost * self._min_time_rent
+        tax = gross * 0.08
+        utilities = self._occupants_count * 120
+
+        return gross - (tax + utilities)
+    
+    def reset(self) -> None:
+        self._rented = False
+        self._cost = self._area * 50
+        self._min_time_rent = 1
+        self._occupants_count = 1
+
+    def get_house_type(self):
+        return "private"
