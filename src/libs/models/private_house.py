@@ -1,5 +1,9 @@
 from src.libs.models.base_house import House
-from src.libs.interfaces.pt_cl_interfaces import RentIncome, Reset, HouseType
+from src.libs.interfaces.pt_cl_interfaces import (
+    RentIncome,
+    Reset,
+    HasComfortIndex,
+)
 from src.libs.validators.common_house import validate_people_count
 from src.libs.validators.private_house import (
     validate_land_area,
@@ -7,7 +11,7 @@ from src.libs.validators.private_house import (
 )
 
 
-class PrivateHouse(House, RentIncome, Reset, HouseType):
+class PrivateHouse(House, RentIncome, Reset, HasComfortIndex):
     WEIGHTS = {
         "S": 0.25,
         "H": 0.3,
@@ -85,6 +89,3 @@ class PrivateHouse(House, RentIncome, Reset, HouseType):
         self._cost = self._area * 50
         self._min_time_rent = 1
         self._occupants_count = 1
-
-    def get_house_type(self):
-        return "private"

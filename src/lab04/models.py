@@ -1,5 +1,10 @@
 from src.libs.models.base_house import House
-from src.lab04.interfaces import RentIncome, Reset, HouseType
+from src.lab04.interfaces import (
+    RentIncome,
+    Reset,
+    HasComfortIndex,
+    HasRentalFeasibilityIndex,
+)
 from src.libs.validators.common_house import validate_people_count
 from src.libs.validators.private_house import (
     validate_land_area,
@@ -11,7 +16,7 @@ from src.libs.validators.commercial_house import (
 )
 
 
-class PrivateHouse(House, RentIncome, Reset, HouseType):
+class PrivateHouse(House, RentIncome, Reset, HasComfortIndex):
     WEIGHTS = {
         "S": 0.25,
         "H": 0.3,
@@ -90,11 +95,8 @@ class PrivateHouse(House, RentIncome, Reset, HouseType):
         self._min_time_rent = 1
         self._occupants_count = 1
 
-    def get_house_type(self):
-        return "private"
 
-
-class CommercialHouse(House, RentIncome, Reset, HouseType):
+class CommercialHouse(House, RentIncome, Reset, HasRentalFeasibilityIndex):
     WEIGHTS = {"S": 0.4, "U": 0.3}  # weights for count rental_feasibility_index()
     SENSITIVITY_USAGE_TYPE = {
         "office": 0.6,
@@ -170,6 +172,3 @@ class CommercialHouse(House, RentIncome, Reset, HouseType):
         self._min_time_rent = 12
         self._customers_average_count = 5
         self._operational_area = 20
-
-    def get_house_type(self):
-        return "commercial"

@@ -1,8 +1,9 @@
-from operator import attrgetter
 from src.libs.models.base_house import House
-from src.libs.models.private_house import PrivateHouse
-from src.libs.models.commercial_house import CommercialHouse
-from src.libs.interfaces.pt_cl_interfaces import RentIncome, HouseType
+from src.libs.interfaces.pt_cl_interfaces import (
+    RentIncome,
+    HasComfortIndex,
+    HasRentalFeasibilityIndex,
+)
 from src.libs.validators.base_house import validate_type, VALIDATORS
 from src.libs.config.config import FIELD_MAP
 
@@ -52,27 +53,23 @@ class HousesDistrict:
         return result
 
     def get_private(self):
-        return [
-            item
-            for item in self._items
-            if isinstance(item, HouseType) and item.get_house_type() == "private"
-        ]
+        return [item for item in self._items if isinstance(item, HasComfortIndex)]
 
     def get_commercial(self):
         return [
-            item
-            for item in self._items
-            if isinstance(item, HouseType) and item.get_house_type() == "commercial"
+            item for item in self._items if isinstance(item, HasRentalFeasibilityIndex)
         ]
 
     def get_rent_income_objects(self):
         return [item for item in self._items if isinstance(item, RentIncome)]
 
-    def sort_by_rent_income_desc(self):
-        self._items.sort(key=lambda item: item.get_rent_income(), reverse=True)
+    def filter_by(self, predicate):
+        filtered = list(filter(predicate, self._items))
+        return HousesDistrict(self._name, filtered)
 
-    def sort_by_cost(self):
-        self._items.sort(key=attrgetter("cost"))
+    def sort_by(self, key_func, reverse=False):
+        sorted_houses = sorted(self._items, key=key_func, reverse=reverse)
+        return HousesDistrict(self._name, sorted_houses)
 
     def find_by(self, field: str, value):
         if not self._items:
@@ -89,6 +86,11 @@ class HousesDistrict:
 
         result = [item for item in self._items if getattr(item, field, None) == value]
         return result
+
+    def apply(self, func):
+        for item in self._items:
+            func(item)
+        return self
 
     def __len__(self):
         return len(self._items)
