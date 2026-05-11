@@ -32,19 +32,19 @@ def warnings_errors():
 
     try:
         house.rented = False
-    except Warning as w:
+    except Exception as w:
         print("Warning:", w)
 
     house.make_contract()
 
     try:
         house.cost = 900
-    except Warning as w:
+    except Exception as w:
         print("Warning:", w)
 
     try:
         house.min_time_rent = 6
-    except Warning as w:
+    except Exception as w:
         print("Warning:", w)
 
     try:
@@ -85,16 +85,9 @@ def comparing():
 
 
 def main():
-    scen = int(input())
-
-    if scen == 1:
-        normal()
-    elif scen == 2:
-        warnings_errors()
-    else:
-        comparing()
-
-    return 0
+    normal()
+    warnings_errors()
+    comparing()
 
 
 if __name__ == "__main__":

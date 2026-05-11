@@ -86,10 +86,12 @@ def scenario_rental_feasibility_index() -> None:
     for item in col.get_all():
         print(item.rental_feasibility_index())
 
-
-if __name__ == "__main__":
+def main():
     scenario_generic_collection()
     scenario_find_filter_map()
     scenario_map_type_change()
     scenario_comfort_index()
     scenario_rental_feasibility_index()
+
+if __name__ == "__main__":
+    main()

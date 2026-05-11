@@ -31,6 +31,7 @@
 python_oop_labs/
 ├─README.md
 ├─src/
+|  ├─demo_all.py
 │  ├─libs/
 │  │  ├─models/
 |  |  ├─interfaces/

@@ -84,35 +84,11 @@ def scenario_4_errors():
 
 
 def main():
-    actions = {
-        "1": scenario_1,
-        "2": scenario_2,
-        "3": scenario_3,
-        "4": scenario_4_errors,
-    }
-
-    while True:
-        print("\n" + "=" * 80)
-        print("DEMO MENU")
-        print("1 - CRUD operations")
-        print("2 - Search & filter")
-        print("3 - Collection features")
-        print("4 - Error handling demo")
-        print("0 - Exit")
-        print("=" * 80)
-
-        choice = input("Select option: ").strip()
-
-        if choice == "0":
-            break
-
-        action = actions.get(choice)
-
-        if action:
-            safe_run(action)
-        else:
-            print("Invalid option")
-
+    safe_run(scenario_1)
+    safe_run(scenario_2)
+    safe_run(scenario_3)
+    safe_run(scenario_4_errors)
+    
 
 if __name__ == "__main__":
     main()
