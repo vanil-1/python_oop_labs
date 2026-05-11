@@ -87,6 +87,7 @@ class House(ABC):
 
     # @abstractmethod
     # def value_efficiency_index(self) -> float | int:
+        # 
         # pass
 
     def __str__(self) -> str:

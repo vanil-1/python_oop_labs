@@ -200,17 +200,13 @@ python_oop_labs/
 ├─src/
 │  ├─ libs/
 |  |   ├─models/
-|  |   ├─collections/
-|  |   ├─config/
-|  |   ├─converts/
-|  |   ├─validators/
+|  |   ...
 |  |   ├─interfaces/
 |  |   |  └─pt_cl_interfaces.py
 |  |   └─services/
 |  |      └─pt_cl_services.py
 │  ├─lab01/
-│  ├─lab02/
-|  ├─lan03/
+│  ...
 |  └─lab04/
 |     ├─demo.py
 |     ├─interfaces.py
@@ -223,8 +219,7 @@ python_oop_labs/
 |     └─data.json
 └─images/
    ├─lab01/
-   ├─lab02/
-   ├─lab03/
+   ...
    └─lab04/
 ```
 

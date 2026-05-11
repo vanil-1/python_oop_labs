@@ -1,5 +1,5 @@
 from src.libs.converters.pt_cl_convert import convert_pr_cl_to_list
-from src.libs.config.config import CLASS_MAP
+from src.libs.models.models_map import CLASS_MAP
 from src.libs.collections.base_district import HousesDistrict
 
 from src.lab05.strategies import (

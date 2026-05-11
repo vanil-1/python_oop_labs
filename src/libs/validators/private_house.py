@@ -1,5 +1,7 @@
+from src.libs.config.config import VALID_HEATING_TYPES
+
 def validate_land_area(land_area: float | int) -> float | int:
-    if not isinstance(land_area, float | int):
+    if not isinstance(land_area, (float, int)):
         raise TypeError("Land Area must be float or int!")
 
     if not (100 <= land_area <= 50000):
@@ -14,7 +16,7 @@ def validate_heating_type(heating_type: str) -> str:
 
     heating_type = heating_type.casefold()
 
-    if not (heating_type in ["gas", "electric", "stove"]):
-        raise ValueError("Heating Type must be gas, elictric or stove!")
+    if not (heating_type in VALID_HEATING_TYPES):
+        raise ValueError(f"Heating Type must be one of: {', '.join(VALID_HEATING_TYPES)}")
 
     return heating_type

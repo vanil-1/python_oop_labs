@@ -1,15 +1,15 @@
-from src.libs.models.base_house import House
+from src.libs.models.base_house_legacy import House
 from src.lab02.base_district import HousesDistrict
 from src.libs.converters.base_convert import convert_house_to_list
 
 
-def print_block(title: str):
+def print_block(title: str) -> None:
     print("\n" + "=" * 80)
     print(title)
     print("=" * 80)
 
 
-def safe_run(fn):
+def safe_run(fn) -> None:
     try:
         fn()
     except Exception as e:

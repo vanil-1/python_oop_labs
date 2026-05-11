@@ -1,0 +1,50 @@
+ [
+ {
+    "type": "commercial",
+    "address": "10 industrial",
+    "floors": 3,
+    "area": 500,
+    "cost": 3000,
+    "min_time_rent": 12,
+    "rented": false,
+    "usage_type": "warehouse",
+    "operational_area": 200,
+    "customers_average_count": 15
+  },
+  {
+    "type": "commercial",
+    "address": "99 center",
+    "floors": 2,
+    "area": 250,
+    "cost": 5000,
+    "min_time_rent": 24,
+    "rented": true,
+    "usage_type": "retail",
+    "operational_area": 120,
+    "customers_average_count": 29
+  },
+  {
+    "type": "commercial",
+    "address": "77 business",
+    "floors": 3,
+    "area": 800,
+    "cost": 8000,
+    "min_time_rent": 36,
+    "rented": false,
+    "usage_type": "office",
+    "operational_area": 300,
+    "customers_average_count": 40
+  },
+  {
+    "type": "commercial",
+    "address": "55 plaza",
+    "floors": 3,
+    "area": 1200,
+    "cost": 12000,
+    "min_time_rent": 48,
+    "rented": false,
+    "usage_type": "hotel",
+    "operational_area": 600,
+    "customers_average_count": 37
+  }
+]

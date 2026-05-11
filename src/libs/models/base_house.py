@@ -10,7 +10,7 @@ from src.libs.validators.base_house import (
 
 
 class House(ABC):
-    WEIGHTS = {}
+    WEIGHTS: dict[str, float] = {}  # for efficiency index
 
     def __init__(
         self,
@@ -20,82 +20,76 @@ class House(ABC):
         cost: float | int,
         min_time_rent: int,
         rented: bool,
-    ):
-        self._address = validate_address(address)
-        self._floors = validate_floors(floors)
-        self._area = validate_area(area)
-        self._cost = validate_cost(cost)
-        self._min_time_rent = validate_min_time_rent(min_time_rent)
-        self._rented = validate_rented(rented)
+    ) -> None:
+        self._address: str = validate_address(address)
+        self._floors: int = validate_floors(floors)
+        self._area: float | int = validate_area(area)
+        self._cost: float | int = validate_cost(cost)
+        self._min_time_rent: int = validate_min_time_rent(min_time_rent)
+        self._rented: bool = validate_rented(rented)
 
     @property
-    def address(self):
+    def address(self) -> str:
         return self._address
 
     @property
-    def floors(self):
+    def floors(self) -> int:
         return self._floors
 
     @property
-    def area(self):
+    def area(self) -> float | int:
         return self._area
 
     @property
-    def cost(self):
+    def cost(self) -> float | int:
         return self._cost
 
     @cost.setter
-    def cost(self, value):
+    def cost(self, value: float | int) -> None:
         value = validate_cost(value)
         if self._rented:
             raise ValueError("You cannot change cost when house is rented!")
-        elif self._cost == value:
+        if self._cost == value:
             raise ValueError("New value of cost is the same as old!")
-        else:
-            self._cost = value
+        self._cost = value
 
     @property
-    def min_time_rent(self):
+    def min_time_rent(self) -> int:
         return self._min_time_rent
 
     @min_time_rent.setter
-    def min_time_rent(self, value):
+    def min_time_rent(self, value: int) -> None:
         value = validate_min_time_rent(value)
         if self._rented:
-            raise ValueError(
-                "You cannot change minimal time of rent when house is rented!"
-            )
+            raise ValueError("You cannot change minimal time of rent when house is rented!")
         elif self._min_time_rent == value:
             raise ValueError("New value of minimal time rent is the same as old!")
-        else:
-            self._min_time_rent = value
+        self._min_time_rent = value
 
     @property
-    def rented(self):
+    def rented(self) -> bool:
         return self._rented
 
     @rented.setter
-    def rented(self, value):
+    def rented(self, value: bool) -> None:
         value = validate_rented(value)
         if self._rented == value:
             raise ValueError("New value of rented is the same as old!")
-        else:
-            self._rented = value
+        self._rented = value
 
-    def make_contract(self):
+    def make_contract(self) -> None:
         if self._rented:
             raise ValueError("House had already rented!")
-        else:
-            self._rented = True
+        self._rented = True
 
-    def cost_rent_time(self):
+    def cost_rent_time(self) -> float | int:
         return self._cost * self._min_time_rent
 
     @abstractmethod
-    def value_efficiency_index(self):
-        pass
+    def value_efficiency_index(self) -> float | int:
+        ...
 
-    def __str__(self):
+    def __str__(self) -> str:
         return (
             f"Address: {self._address}, "
             f"Floors: {self._floors}, "
@@ -105,10 +99,14 @@ class House(ABC):
             f"Rented: {self._rented}"
         )
 
-    def __repr__(self):
-        return f"House(address={self._address!r}, floors={self._floors}, area={self._area}, cost={self._cost}, min_time_rent={self._min_time_rent},rented={self._rented})"
+    def __repr__(self) -> str:
+        return (
+            f"House(address={self._address!r}, floors={self._floors}, "
+            f"area={self._area}, cost={self._cost}, "
+            f"min_time_rent={self._min_time_rent}, rented={self._rented})"
+        )
 
-    def __eq__(self, other):
+    def __eq__(self, other: object) -> bool:
         if not isinstance(other, House):
             return False
         return self._area == other._area and self._cost == other._cost

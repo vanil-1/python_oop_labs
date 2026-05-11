@@ -1,7 +1,3 @@
-from src.libs.models.private_house import PrivateHouse
-from src.libs.models.commercial_house import CommercialHouse
-
-
 FIELD_MAP = {
     "address": "address",
     "floors": "floors",
@@ -11,4 +7,6 @@ FIELD_MAP = {
     "rented": "rented",
 }
 
-CLASS_MAP = {"private": PrivateHouse, "commercial": CommercialHouse}
+VALID_USAGE_TYPES = {"office", "retail", "warehouse", "hotel"}
+
+VALID_HEATING_TYPES = {"gas", "electric", "stove"}

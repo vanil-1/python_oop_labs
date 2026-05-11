@@ -71,7 +71,7 @@ def validate_rented(rented: bool) -> bool:
     return rented
 
 
-def validate_type(obj, t):
+def validate_type(obj: object, t: type) -> None:
     if not isinstance(obj, t):
         raise TypeError(f"Object's type is not {t}!")
 

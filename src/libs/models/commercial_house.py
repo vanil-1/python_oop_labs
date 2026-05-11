@@ -2,7 +2,7 @@ from src.libs.models.base_house import House
 from src.libs.interfaces.pt_cl_interfaces import (
     RentIncome,
     Reset,
-    HasRentalFeasibilityIndex,
+    RentalFeasibilityIndex,
 )
 from src.libs.validators.common_house import validate_people_count
 from src.libs.validators.commercial_house import (
@@ -11,7 +11,7 @@ from src.libs.validators.commercial_house import (
 )
 
 
-class CommercialHouse(House, RentIncome, Reset, HasRentalFeasibilityIndex):
+class CommercialHouse(House, RentIncome, Reset, RentalFeasibilityIndex):
     WEIGHTS = {"S": 0.4, "U": 0.3}  # weights for count rental_feasibility_index()
     SENSITIVITY_USAGE_TYPE = {
         "office": 0.6,
@@ -29,7 +29,7 @@ class CommercialHouse(House, RentIncome, Reset, HasRentalFeasibilityIndex):
         min_time_rent: int,
         rented: bool,
         usage_type: str,
-        operational_area: int | float,
+        operational_area: float | int,
         customers_average_count: int,
     ):
         super().__init__(
@@ -46,22 +46,22 @@ class CommercialHouse(House, RentIncome, Reset, HasRentalFeasibilityIndex):
         self._customers_average_count = validate_people_count(customers_average_count)
 
     @property
-    def customers_average_count(self):
+    def customers_average_count(self) -> int:
         return self._customers_average_count
 
     @customers_average_count.setter
-    def customers_average_count(self, value):
+    def customers_average_count(self, value: int) -> None:
         self._customers_average_count = validate_people_count(value)
 
     @property
-    def operational_area(self):
+    def operational_area(self) -> float | int:
         return self._operational_area
 
     @operational_area.setter
-    def operational_area(self, value):
+    def operational_area(self, value: float | int) -> None:
         self._operational_area = validate_operational_area(value)
 
-    def rental_feasibility_index(self):
+    def rental_feasibility_index(self) -> float | int:
         S = 1 - (abs((self._operational_area / self._area) - 0.7) / 0.7)
         sensitivity = self.SENSITIVITY_USAGE_TYPE[self._usage_type]
         U = 1 - (sensitivity * abs(S - 0.7))
@@ -70,7 +70,7 @@ class CommercialHouse(House, RentIncome, Reset, HasRentalFeasibilityIndex):
 
         return max(0, min(rfi, 1))
 
-    def value_efficiency_index(self):
+    def value_efficiency_index(self) -> float | int:
         return self.rental_feasibility_index()
 
     def get_rent_income(self) -> float:

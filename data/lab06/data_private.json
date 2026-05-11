@@ -1,0 +1,50 @@
+[
+  {
+    "type": "private",
+    "address": "12 maple",
+    "floors": 2,
+    "area": 120.5,
+    "cost": 800,
+    "min_time_rent": 6,
+    "rented": false,
+    "land_area": 400,
+    "heating_type": "gas",
+    "occupants_count": 3
+  },
+  {
+    "type": "private",
+    "address": "45 oak",
+    "floors": 1,
+    "area": 80,
+    "cost": 600,
+    "min_time_rent": 3,
+    "rented": true,
+    "land_area": 300,
+    "heating_type": "electric",
+    "occupants_count": 1
+  },
+  {
+    "type": "private",
+    "address": "78 pine",
+    "floors": 3,
+    "area": 150,
+    "cost": 950,
+    "min_time_rent": 12,
+    "rented": false,
+    "land_area": 500,
+    "heating_type": "stove",
+    "occupants_count": 4
+  },
+  {
+    "type": "private",
+    "address": "33 birch",
+    "floors": 2,
+    "area": 110,
+    "cost": 700,
+    "min_time_rent": 4,
+    "rented": true,
+    "land_area": 350,
+    "heating_type": "gas",
+    "occupants_count": 2
+  }
+]

@@ -9,6 +9,7 @@
 ### lab03
 ### lav04
 ### lab05
+### lab06
 
 ---
 
@@ -20,7 +21,6 @@
 
 ## Неначатые лабораторные работы:
 
-### lab06
 ### lab07
 
 ---
@@ -41,21 +41,17 @@ python_oop_labs/
 │  │  ├─config/
 |  |  └─validators/
 │  ├─lab01/
-│  ├─lab02/
-│  ├─lab03/
-│  ├─lab04/
-|  └─lab05/
+│  ...
+|  └─lab06/
 ├─data/
 |  ├─lab02/
-|  ├─lab03/
-|  ├─lab04/
+|  ...
 |  └─lab05/
-└─images/
-   ├─lab01/
-   ├─lab02/
-   ├─lab03/
-   ├─lab04/
-   └─lab05/
+├─images/
+|  ├─lab01/
+|  ...
+|  └─lab06/
+└─.gitignore
 ```
 
 ---

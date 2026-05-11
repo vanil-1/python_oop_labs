@@ -2,7 +2,7 @@ from src.libs.models.base_house import House
 from src.libs.interfaces.pt_cl_interfaces import (
     RentIncome,
     Reset,
-    HasComfortIndex,
+    ComfortIndex,
 )
 from src.libs.validators.common_house import validate_people_count
 from src.libs.validators.private_house import (
@@ -11,7 +11,7 @@ from src.libs.validators.private_house import (
 )
 
 
-class PrivateHouse(House, RentIncome, Reset, HasComfortIndex):
+class PrivateHouse(House, RentIncome, Reset, ComfortIndex):
     WEIGHTS = {
         "S": 0.25,
         "H": 0.3,
@@ -31,7 +31,7 @@ class PrivateHouse(House, RentIncome, Reset, HasComfortIndex):
         land_area: int | float,
         heating_type: str,
         occupants_count: int,
-    ):
+    ) -> None:
         super().__init__(
             address=address,
             floors=floors,
@@ -46,14 +46,14 @@ class PrivateHouse(House, RentIncome, Reset, HasComfortIndex):
         self._occupants_count = validate_people_count(occupants_count)
 
     @property
-    def occupants_count(self):
+    def occupants_count(self) -> int:
         return self._occupants_count
 
     @occupants_count.setter
-    def occupants_count(self, value):
+    def occupants_count(self, value: int) -> None:
         self._occupants_count = validate_people_count(value)
 
-    def comfort_index(self):
+    def comfort_index(self) -> float | int:
         area_balance = (
             1 - abs((self._area / self._land_area) - 0.3)
         ) / 0.3  # cofficient area: area / land_area
@@ -74,7 +74,7 @@ class PrivateHouse(House, RentIncome, Reset, HasComfortIndex):
 
         return max(0, min(ci, 1))
 
-    def value_efficiency_index(self):
+    def value_efficiency_index(self) -> float | int:
         return self.comfort_index()
 
     def get_rent_income(self) -> float:
