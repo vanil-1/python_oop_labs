@@ -88,7 +88,7 @@ def main():
     safe_run(scenario_2)
     safe_run(scenario_3)
     safe_run(scenario_4_errors)
-    
+
 
 if __name__ == "__main__":
     main()

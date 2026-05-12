@@ -1,25 +1,28 @@
 from __future__ import annotations
 from typing import (
     TypeVar,
-    Generic, 
-    Callable, 
-    Any, 
-    Optional, 
-    Iterator, 
+    Generic,
+    Callable,
+    Any,
+    Optional,
+    Iterator,
     Protocol,
     runtime_checkable,
 )
+
 
 @runtime_checkable
 class ComfortIndex(Protocol):
     def comfort_index(self) -> float | int: ...
 
+
 @runtime_checkable
 class RentalFeasibilityIndex(Protocol):
-    def rental_feasibility_index(self) -> float | int: ... 
+    def rental_feasibility_index(self) -> float | int: ...
 
-C = TypeVar("C", bound = ComfortIndex)
-F = TypeVar("F", bound = RentalFeasibilityIndex)
+
+C = TypeVar("C", bound=ComfortIndex)
+F = TypeVar("F", bound=RentalFeasibilityIndex)
 
 T = TypeVar("T")
 R = TypeVar("R")

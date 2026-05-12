@@ -61,7 +61,9 @@ class House(ABC):
     def min_time_rent(self, value: int) -> None:
         value = validate_min_time_rent(value)
         if self._rented:
-            raise ValueError("You cannot change minimal time of rent when house is rented!")
+            raise ValueError(
+                "You cannot change minimal time of rent when house is rented!"
+            )
         elif self._min_time_rent == value:
             raise ValueError("New value of minimal time rent is the same as old!")
         self._min_time_rent = value
@@ -87,7 +89,7 @@ class House(ABC):
 
     # @abstractmethod
     # def value_efficiency_index(self) -> float | int:
-        # pass
+    # pass
 
     def __str__(self) -> str:
         return (

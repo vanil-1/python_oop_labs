@@ -1,5 +1,6 @@
 from src.libs.config.config import VALID_USAGE_TYPES
 
+
 def validate_usage_type(usage_type: str) -> str:
     if not isinstance(usage_type, str):
         raise TypeError("Usage Type must be string!")

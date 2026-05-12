@@ -14,10 +14,12 @@ LABS = [
     ("LAB-06", lab06),
 ]
 
+
 def run_all() -> None:
     for name, fn in LABS:
         print(name)
         fn()
+
 
 if __name__ == "__main__":
     run_all()

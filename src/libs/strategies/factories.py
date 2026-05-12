@@ -1,8 +1,10 @@
 from typing import Callable, Protocol
 
+
 class HasCostArea(Protocol):
     cost: float
     area: float
+
 
 def make_cost_filter(max_cost) -> Callable[[HasCostArea], bool]:
     def predicate(house) -> bool:

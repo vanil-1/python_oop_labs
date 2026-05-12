@@ -6,8 +6,7 @@ from src.libs.interfaces.pt_cl_interfaces import (
 )
 from src.libs.validators.base_house import validate_type, VALIDATORS
 from src.libs.config.config import FIELD_MAP
-from typing import (Callable, Any, Iterator)
-
+from typing import Callable, Any, Iterator
 
 
 class HousesDistrict:
@@ -68,11 +67,7 @@ class HousesDistrict:
         filtered = list(filter(predicate, self._items))
         return HousesDistrict(self._name, filtered)
 
-    def sort_by(
-        self,
-        key_func: Callable[[House], Any],
-        reverse: bool = False
-    ) -> None:
+    def sort_by(self, key_func: Callable[[House], Any], reverse: bool = False) -> None:
         sorted_houses = sorted(self._items, key=key_func, reverse=reverse)
         return HousesDistrict(self._name, sorted_houses)
 
@@ -95,7 +90,6 @@ class HousesDistrict:
         for item in self._items:
             func(item)
         return self
-        
 
     def __len__(self) -> int:
         return len(self._items)
