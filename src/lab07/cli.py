@@ -77,7 +77,7 @@ class CLI:
         self._print_menu()
 
     def _print_banner(self) -> None:
-        banner = rf"""{BOLD}{RED}{"=" * 70 }{RESET}
+        banner = rf"""{BOLD}{RED}{'=' * 70 }{RESET}
 {BLUE}||{'-' * 66}||
 ||{' ' * 66}||
 ||  ██████╗  ██████╗ ██████╗       ██╗      █████╗ ██████╗ ███████╗ ||
@@ -90,12 +90,12 @@ class CLI:
 ||{'-' * 66}||
 ||{WHITE} Developer: {CYAN}vanil-1{' ' * 37}{RESET}{WHITE}Ver.1.0.7.{RESET}{BLUE}||
 ||{WHITE} Teacher: {CYAN}wilhemiv{' ' * 38}{RESET}{WHITE}19.05.2026{RESET}{BLUE}||{RESET}
-{BOLD}{RED}{"=" * 70 }{RESET}"""
+{BOLD}{RED}{'=' * 70 }{RESET}"""
 
         print(banner)
         print(f"{WHITE}Completed labs:{RESET}")
         print(f"{GREEN}Lab01  Lab02  Lab03  Lab04  Lab05  Lab06  Lab07{RESET}")
-        print(f"{GRAY}{"=" * 47}{RESET}")
+        print(f"{GRAY}{'=' * 47}{RESET}")
 
     def _print_stats(self) -> None:
         houses = self._app.get_all_houses()
