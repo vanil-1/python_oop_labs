@@ -28,7 +28,7 @@ class PrivateHouse(House, RentIncome, Reset, ComfortIndex):
         cost: float | int,
         min_time_rent: int,
         rented: bool,
-        land_area: int | float,
+        land_area: float | int,
         heating_type: str,
         occupants_count: int,
     ) -> None:
@@ -44,6 +44,14 @@ class PrivateHouse(House, RentIncome, Reset, ComfortIndex):
         self._land_area = validate_land_area(land_area)
         self._heating_type = validate_heating_type(heating_type)
         self._occupants_count = validate_people_count(occupants_count)
+
+    @property
+    def land_area(self) -> float | int:
+        return self._land_area
+
+    @property
+    def heating_type(self) -> str:
+        return self._heating_type
 
     @property
     def occupants_count(self) -> int:

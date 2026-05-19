@@ -46,6 +46,10 @@ class CommercialHouse(House, RentIncome, Reset, RentalFeasibilityIndex):
         self._customers_average_count = validate_people_count(customers_average_count)
 
     @property
+    def usage_type(self) -> str:
+        return self._usage_type
+
+    @property
     def customers_average_count(self) -> int:
         return self._customers_average_count
 

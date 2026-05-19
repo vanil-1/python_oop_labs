@@ -63,11 +63,13 @@ class HousesDistrict:
     def get_rent_income_objects(self) -> list[House]:
         return [item for item in self._items if isinstance(item, RentIncome)]
 
-    def filter_by(self, predicate: Callable[[House], bool]) -> list[House]:
+    def filter_by(self, predicate: Callable[[House], bool]) -> "HousesDistrict":
         filtered = list(filter(predicate, self._items))
         return HousesDistrict(self._name, filtered)
 
-    def sort_by(self, key_func: Callable[[House], Any], reverse: bool = False) -> None:
+    def sort_by(
+        self, key_func: Callable[[House], Any], reverse: bool = False
+    ) -> "HousesDistrict":
         sorted_houses = sorted(self._items, key=key_func, reverse=reverse)
         return HousesDistrict(self._name, sorted_houses)
 
